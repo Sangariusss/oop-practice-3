@@ -1,0 +1,35 @@
+package com.sangarius.opp.practice3.persistence.entity.enums;
+
+public enum Brand {
+    INTEL,
+    AMD,
+    NVIDIA,
+    ASUS,
+    MSI,
+    GIGABYTE,
+    ASROCK,
+    EVGA,
+    CORSAIR,
+    KINGSTON,
+    CRUCIAL,
+    GSKILL,
+    ADATA,
+    SAMSUNG,
+    WD,
+    SEAGATE,
+    TOSHIBA,
+    CREATIVE,
+    ASUS_ROG,
+    NZXT,
+    COOLER_MASTER,
+    THERMALTAKE,
+    ANTEC,
+    BE_QUIET,
+    MSI_GAMING,
+    BIOSTAR,
+    ECS,
+    FOXCONN,
+    SUPERMICRO,
+    WESTERN_DIGITAL
+}
+
