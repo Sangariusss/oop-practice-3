@@ -10,21 +10,23 @@ import java.util.List;
 public class Motherboard implements Component {
 
     private final String name;
+    private final double price;
     private final FormFactor formFactor;
     private final boolean overclocking;
     private final Brand brand;
     private final List<Ram> rams;
     private final List<Memory> memories;
     private final List<Component> components; // Список компонентів, підключених до материнської плати
-    // обов'язкові
     private Processor processor;
     // не обов'язкові
     private VideoCard videoCard;
     private AudioCard audioCard;
 
-    public Motherboard(String name, FormFactor formFactor, boolean overclocking, Brand brand,
-        Processor processor, CoolingDevice coolingDevice, List<Ram> rams, List<Memory> memories) {
+    public Motherboard(String name, double price, FormFactor formFactor, boolean overclocking,
+        Brand brand,
+        Processor processor, List<Ram> rams, List<Memory> memories) {
         this.name = name;
+        this.price = price;
         this.formFactor = formFactor;
         this.overclocking = overclocking;
         this.brand = brand;
@@ -39,10 +41,8 @@ public class Motherboard implements Component {
     }
 
     public String getDescription() {
-        return "Материнська плата: " + name + "\n"
-            + "Форм-фактор: " + formFactor + "\n"
-            + "Підтримка оверклокінгу: " + overclocking + "\n"
-            + "Бренд: " + brand + "\n";
+        return "Материнська плата: " + name + " " + "Форм-фактор: " + formFactor + " "
+            + "Підтримка оверклокінгу: " + overclocking + " " + "Бренд: " + brand;
     }
 
     public void addRam(Ram ram) {

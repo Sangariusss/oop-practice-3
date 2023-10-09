@@ -30,6 +30,7 @@ public enum Brand {
     ECS,
     FOXCONN,
     SUPERMICRO,
-    WESTERN_DIGITAL
+    WESTERN_DIGITAL,
+    REALTEK
 }
 

@@ -7,12 +7,12 @@ import com.sangarius.opp.practice3.persistence.entity.Processor;
 import com.sangarius.opp.practice3.persistence.entity.Ram;
 import com.sangarius.opp.practice3.persistence.entity.enums.Brand;
 import com.sangarius.opp.practice3.persistence.entity.enums.FormFactor;
-import com.sangarius.opp.practice3.persistence.entity.exceptions.MissingRequiredFieldException;
 import java.util.List;
 
 public class MotherboardBuilder {
 
     private String name;
+    private double price;
     private FormFactor formFactor;
     private boolean overclocking;
     private Brand brand;
@@ -23,6 +23,11 @@ public class MotherboardBuilder {
 
     public MotherboardBuilder setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public MotherboardBuilder setPrice(double price) {
+        this.price = price;
         return this;
     }
 
@@ -51,24 +56,22 @@ public class MotherboardBuilder {
         return this;
     }
 
-    public MotherboardBuilder setRams(List<Ram> rams) {
+    public void setRams(List<Ram> rams) {
         this.rams = rams;
-        return this;
     }
 
-    public MotherboardBuilder setMemories(List<Memory> memories) {
+    public void setMemories(List<Memory> memories) {
         this.memories = memories;
-        return this;
     }
 
     public Motherboard build() {
-        if (name == null || formFactor == null || brand == null || processor == null ||
+       /* if (name == null || formFactor == null || brand == null || processor == null ||
             coolingDevice == null || rams == null || memories == null) {
             throw new MissingRequiredFieldException(
                 "Не вдалося створити Motherboard. Обов'язкові поля не встановлені.");
-        }
+        }*/
 
-        return new Motherboard(name, formFactor, overclocking, brand, processor, coolingDevice,
+        return new Motherboard(name, price, formFactor, overclocking, brand, processor,
             rams, memories);
     }
 }

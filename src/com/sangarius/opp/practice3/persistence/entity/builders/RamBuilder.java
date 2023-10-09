@@ -1,17 +1,24 @@
 package com.sangarius.opp.practice3.persistence.entity.builders;
 
 import com.sangarius.opp.practice3.persistence.entity.Ram;
+import com.sangarius.opp.practice3.persistence.entity.enums.Brand;
 import com.sangarius.opp.practice3.persistence.entity.exceptions.MissingRequiredFieldException;
 
 public class RamBuilder {
 
     private String name;
+    private Brand brand;
     private int capacityGB;
     private String type;
     private double price;
 
     public RamBuilder setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public RamBuilder setBrand(Brand brand) {
+        this.brand = brand;
         return this;
     }
 
@@ -36,6 +43,6 @@ public class RamBuilder {
                 "Не вдалося створити Ram. Обов'язкові поля не встановлені.");
         }
 
-        return new Ram(name, capacityGB, type, price);
+        return new Ram(name, capacityGB, brand, type, price);
     }
 }

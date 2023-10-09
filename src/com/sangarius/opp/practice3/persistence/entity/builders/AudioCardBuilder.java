@@ -33,6 +33,5 @@ public class AudioCardBuilder {
 
         return new AudioCard(name, brand, price);
     }
-
 }
 
