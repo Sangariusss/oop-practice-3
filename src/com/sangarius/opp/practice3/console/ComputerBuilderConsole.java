@@ -3,7 +3,6 @@ package com.sangarius.opp.practice3.console;
 import com.sangarius.opp.practice3.domain.Assembly;
 import com.sangarius.opp.practice3.domain.AssemblyImpl;
 import com.sangarius.opp.practice3.domain.ComputerAssemblyService;
-import com.sangarius.opp.practice3.persistence.entity.Ram;
 import com.sangarius.opp.practice3.persistence.entity.builders.AudioCardBuilder;
 import com.sangarius.opp.practice3.persistence.entity.builders.CoolingDeviceBuilder;
 import com.sangarius.opp.practice3.persistence.entity.builders.MemoryBuilder;
@@ -13,8 +12,6 @@ import com.sangarius.opp.practice3.persistence.entity.builders.RamBuilder;
 import com.sangarius.opp.practice3.persistence.entity.builders.VideoCardBuilder;
 import com.sangarius.opp.practice3.persistence.entity.enums.Brand;
 import com.sangarius.opp.practice3.persistence.entity.enums.FormFactor;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ComputerBuilderConsole {
@@ -140,15 +137,6 @@ public class ComputerBuilderConsole {
             .setFormFactor(formFactor)
             .setOverclocking(overclocking);
 
-        System.out.println("Бажаєте додати RAM модуль? (true або false):");
-        boolean addRam = new Scanner(System.in).nextBoolean();
-        if (addRam) {
-            List<Ram> rams = new ArrayList<>();
-            rams.add(new Ram("Corsair", 64, brand, "DDR5", 12000));
-
-            motherboardBuilder.setRams(rams);
-        }
-
         assemblyService.addMotherboard(motherboardBuilder);
     }
 
@@ -199,45 +187,57 @@ public class ComputerBuilderConsole {
     }
 
     private void addAudioCard() {
-        System.out.println("Введіть назву аудіокарти:");
-        String name = new Scanner(System.in).nextLine();
+        System.out.println("Бажаєте додати відеокарту? (true або false):");
+        boolean addVideoCard = new Scanner(System.in).nextBoolean();
 
-        System.out.println("Введіть бренд аудіокарти (наприкалд Realtek, Creative):");
-        String brandStr = new Scanner(System.in).nextLine().toUpperCase().replace(" ", "_");
-        Brand brand = Brand.valueOf(brandStr);
+        if (addVideoCard) {
+            System.out.println("Введіть назву аудіокарти:");
 
-        System.out.println("Введіть ціну аудіокарти:");
-        double price = new Scanner(System.in).nextDouble();
+            String name = new Scanner(System.in).nextLine();
 
-        AudioCardBuilder audioCardBuilder = new AudioCardBuilder()
-            .setName(name)
-            .setPrice(price)
-            .setBrand(brand);
+            System.out.println("Введіть бренд аудіокарти (наприкалд Realtek, Creative):");
+            String brandStr = new Scanner(System.in).nextLine().toUpperCase().replace(" ", "_");
+            Brand brand = Brand.valueOf(brandStr);
 
-        assemblyService.addAudioCard(audioCardBuilder);
+            System.out.println("Введіть ціну аудіокарти:");
+            double price = new Scanner(System.in).nextDouble();
+
+            AudioCardBuilder audioCardBuilder = new AudioCardBuilder()
+                .setName(name)
+                .setPrice(price)
+                .setBrand(brand);
+
+            assemblyService.addAudioCard(audioCardBuilder);
+        }
     }
 
     private void addCoolingDevice() {
-        System.out.println("Введіть назву системи охолодження:");
-        String name = new Scanner(System.in).nextLine();
+        System.out.println("Бажаєте додати аудіокарту? (true або false):");
+        boolean addAudioCard = new Scanner(System.in).nextBoolean();
 
-        System.out.println("Введіть бренд системи охолодження:");
-        String brandStr = new Scanner(System.in).nextLine().toUpperCase().replace(" ", "_");
-        Brand brand = Brand.valueOf(brandStr);
+        if (addAudioCard) {
+            System.out.println("Введіть назву системи охолодження:");
 
-        System.out.println("Система охолодження рідкісна? (true або false):");
-        boolean liquidCooling = new Scanner(System.in).nextBoolean();
+            String name = new Scanner(System.in).nextLine();
 
-        System.out.println("Введіть ціну системи охолодження:");
-        double price = new Scanner(System.in).nextDouble();
+            System.out.println("Введіть бренд системи охолодження:");
+            String brandStr = new Scanner(System.in).nextLine().toUpperCase().replace(" ", "_");
+            Brand brand = Brand.valueOf(brandStr);
 
-        CoolingDeviceBuilder coolingDeviceBuilder = new CoolingDeviceBuilder()
-            .setName(name)
-            .setPrice(price)
-            .setBrand(brand)
-            .setLiquidCooling(liquidCooling);
+            System.out.println("Система охолодження рідкісна? (true або false):");
+            boolean liquidCooling = new Scanner(System.in).nextBoolean();
 
-        assemblyService.addCoolingDevice(coolingDeviceBuilder);
+            System.out.println("Введіть ціну системи охолодження:");
+            double price = new Scanner(System.in).nextDouble();
+
+            CoolingDeviceBuilder coolingDeviceBuilder = new CoolingDeviceBuilder()
+                .setName(name)
+                .setPrice(price)
+                .setBrand(brand)
+                .setLiquidCooling(liquidCooling);
+
+            assemblyService.addCoolingDevice(coolingDeviceBuilder);
+        }
     }
 
     private void viewAssembly() {

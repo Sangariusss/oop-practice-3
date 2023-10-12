@@ -1,6 +1,5 @@
 package com.sangarius.opp.practice3.persistence.entity.builders;
 
-import com.sangarius.opp.practice3.persistence.entity.CoolingDevice;
 import com.sangarius.opp.practice3.persistence.entity.Memory;
 import com.sangarius.opp.practice3.persistence.entity.Motherboard;
 import com.sangarius.opp.practice3.persistence.entity.Processor;
@@ -17,7 +16,6 @@ public class MotherboardBuilder {
     private boolean overclocking;
     private Brand brand;
     private Processor processor;
-    private CoolingDevice coolingDevice;
     private List<Ram> rams;
     private List<Memory> memories;
 
@@ -48,11 +46,6 @@ public class MotherboardBuilder {
 
     public MotherboardBuilder setProcessor(Processor processor) {
         this.processor = processor;
-        return this;
-    }
-
-    public MotherboardBuilder setCoolingDevice(CoolingDevice coolingDevice) {
-        this.coolingDevice = coolingDevice;
         return this;
     }
 

@@ -37,7 +37,7 @@ public class Motherboard implements Component {
     }
 
     public double getPrice() {
-        return 0.0;
+        return price;
     }
 
     public String getDescription() {
